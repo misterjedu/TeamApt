@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="progress"
+            type="int" />
+
+        <variable
+            name="balance"
+            type="String" />
+
+        <variable
+            name="added"
+            type="String" />
+
+        <variable
+            name="requestClickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/purple_500"
+            android:padding="16dp"
+            tools:context=".ui.home.HomeFragment">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/fragment_home_profile_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:src="@drawable/apt_icon"
+                app:civ_border_width="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_home_profile_text_vew_1"
+                style="@style/SubText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Julia, you have left"
+                app:layout_constraintStart_toStartOf="@+id/fragment_home_profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_profile_image" />
+
+
+            <TextView
+                android:id="@+id/fragment_home_profile_text_vew_2"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="2 Withdraws"
+                app:layout_constraintStart_toStartOf="@+id/fragment_home_profile_text_vew_1"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_profile_text_vew_1" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/circular_background"
+                android:clickable="true"
+                android:elevation="1dp"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{requestClickListener}"
+                android:orientation="vertical"
+                android:padding="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/fragment_home_profile_image">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_outline_add_24" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    style="@style/SubText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/request" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/fragment_home_progressBar"
+                style="@style/CircularDeterminateProgressBar"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp"
+                android:progress="@{progress}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_profile_text_vew_2"
+                tools:progress="20" />
+
+            <TextView
+                android:id="@+id/fragment_home_account_balance_tv"
+                style="@style/SubText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="90dp"
+                android:text="@string/account_balance"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_home_progressBar"
+                app:layout_constraintStart_toStartOf="@+id/fragment_home_progressBar"
+                app:layout_constraintTop_toTopOf="@+id/fragment_home_progressBar" />
+
+            <TextView
+                android:id="@+id/fragment_home_total_account_balance_tv"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{`£` + balance}"
+                android:textSize="40sp"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_home_account_balance_tv"
+                app:layout_constraintStart_toStartOf="@+id/fragment_home_account_balance_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_account_balance_tv"
+                tools:text="N345" />
+
+            <TextView
+                android:id="@+id/fragment_home_added_amount_tv"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@{`+` + added + `£`}"
+                app:layout_constraintEnd_toEndOf="@+id/fragment_home_total_account_balance_tv"
+                app:layout_constraintStart_toStartOf="@+id/fragment_home_total_account_balance_tv"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_total_account_balance_tv"
+                tools:text="40" />
+
+            <ImageView
+                android:id="@+id/fragment_home_added_indicator_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="4dp"
+                android:src="@drawable/ic_baseline_near_me_24"
+                app:layout_constraintBottom_toBottomOf="@+id/fragment_home_added_amount_tv"
+                app:layout_constraintEnd_toStartOf="@+id/fragment_home_added_amount_tv"
+                app:layout_constraintTop_toTopOf="@+id/fragment_home_added_amount_tv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fragment_home_added_card_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_latest_action_tv"
+                tools:itemCount="1"
+                tools:listitem="@layout/item_layout_actions" />
+
+            <TextView
+                android:id="@+id/fragment_home_latest_action_tv"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/latest_actions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_home_progressBar" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

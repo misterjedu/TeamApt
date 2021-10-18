@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_500">#231356</color>
+    <color name="purple_200">#361F71</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="progress_color">#8FF1FE</color>
+
+    <color name="card_color_one">#4C207F</color>
+    <color name="card_color_two">#701F6A</color>
+
+    <color name="icon_color_one">#61D8E3</color>
+    <color name="icon_color_two">#D33DE1</color>
+    <color name="icon_color_three">#EF3674</color>
+</resources>

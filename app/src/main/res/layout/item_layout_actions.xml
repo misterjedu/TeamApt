@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="resources"
+            type="com.jedun.teamaptexercise.ui.model.ItemCardResource" />
+
+        <variable
+            name="data"
+            type="com.jedun.teamaptexercise.ui.model.Savings" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@android:color/transparent"
+        android:paddingBottom="3dp">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/action_cards_curved_background"
+            android:backgroundTint="@{ContextCompat.getColor(context, resources.cardColorId)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/item_layout_action_cardIcon"
+                style="@style/LatestActionsIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@{ContextCompat.getColor(context, resources.iconColorId)}"
+                android:src="@{ContextCompat.getDrawable(context, resources.iconId)}"
+                app:layout_constraintBottom_toTopOf="@+id/item_layout_action_from"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_baseline_ballot_24" />
+
+            <TextView
+                android:id="@+id/item_layout_action_from"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="@{data.from}"
+                app:layout_constraintBottom_toTopOf="@+id/item_layout_action_purpose"
+                app:layout_constraintStart_toStartOf="@+id/item_layout_action_cardIcon"
+                app:layout_constraintTop_toBottomOf="@+id/item_layout_action_cardIcon"
+                tools:text="Mommy" />
+
+            <TextView
+                android:id="@+id/item_layout_action_purpose"
+                style="@style/SubText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{data.purpose}"
+                app:layout_constraintStart_toStartOf="@+id/item_layout_action_from"
+                app:layout_constraintTop_toBottomOf="@+id/item_layout_action_from"
+                tools:text="Pocket Money" />
+
+            <TextView
+                android:id="@+id/item_layout_action_amount"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="24dp"
+                android:text="@{`+` + Integer.toString(data.amount) + `£`}"
+                android:textColor="@{ContextCompat.getColor(context, resources.iconColorId)}"
+                android:textSize="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/item_layout_action_purpose"
+                app:layout_constraintTop_toBottomOf="@+id/item_layout_action_purpose"
+                tools:text="77" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="@color/purple_500"
+            android:padding="20dp"
+            app:cardCornerRadius="50dp"
+            app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                style="@style/LatestActionsIconArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/arrow_forward" />
+
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
